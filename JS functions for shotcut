@@ -1,0 +1,12 @@
+Function to get each file name in the directory:
+
+
+function getDirectoryFilesname(directory){
+    var fs = require('fs');
+    const files = fs.readdirSync(directory)
+    console.log(files)
+    files.forEach(file => {
+        console.log(file)
+    })
+}
+getDirectoryFilesname('./routes');
