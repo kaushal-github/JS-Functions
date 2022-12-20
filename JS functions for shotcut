@@ -1,5 +1,4 @@
-Function to get each file name in the directory:
-
+1.  //Function to get each file name in the directory:
 
 function getDirectoryFilesname(directory){
     var fs = require('fs');
@@ -10,3 +9,6 @@ function getDirectoryFilesname(directory){
     })
 }
 getDirectoryFilesname('./routes');
+
+
+
