@@ -1,6 +1,6 @@
 //trick 1
 
-//insert into anyTable (anycolumn,anycolumn) value (anycolumnValue,anyColumnValue);
+//insert into anyTable (anycolumn,anycolumn) values (anycolumnValue,anyColumnValue);
 
 cosnt fn = (...params) => {
   var a = "";
@@ -17,7 +17,7 @@ cosnt fn = (...params) => {
   return sql;
 };
 
-//insert into anyTable (anycolumn,anycolumn) value (anycolumnValue,anyColumnValue);
+//insert into anyTable (anycolumn,anycolumn) values (anycolumnValue,anyColumnValue);
 //trick 2
 const fn =(...params)=>{
     var a=[];
