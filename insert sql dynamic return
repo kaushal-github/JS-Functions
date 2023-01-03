@@ -1,4 +1,7 @@
 //trick 1
+
+//insert into anyTable (anycolumn,anycolumn) value (anycolumnValue,anyColumnValue);
+
 cosnt fn = (...params) => {
   var a = "";
   var b = "";
@@ -14,8 +17,7 @@ cosnt fn = (...params) => {
   return sql;
 };
 
-
-
+//insert into anyTable (anycolumn,anycolumn) value (anycolumnValue,anyColumnValue);
 //trick 2
 const fn =(...params)=>{
     var a=[];
