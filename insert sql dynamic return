@@ -1,0 +1,32 @@
+//trick 1
+cosnt fn = (...params) => {
+  var a = "";
+  var b = "";
+  for (i = 1; i <= params.length - 1; i++) {
+    a = a + "??,";
+    b = b + "?,";
+  }
+  //result comes link ??,??,??, we need to remote last character ,
+  a = a.slice(0, -1);
+  b = b.slice(0, -1);
+  const sql =
+    "insert into " + params[0] + " (" + a + ")" + " values " + "(" + b + ")";
+  return sql;
+};
+
+
+
+//trick 2
+const fn =(...params)=>{
+    var a=[];
+    var b=[];
+    for(i = 1; i<=params.length-1;i++){
+             a.push("??");
+             b.push("?");
+    }
+    const sql=
+    "insert into "+params[0]+' ('+ a.toString()+')' +" values "+'('+b.toString()+')';
+    return sql
+}
+
+
