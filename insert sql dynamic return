@@ -32,3 +32,47 @@ const fn =(...params)=>{
 }
 
 
+//trick 3
+exports.insertSqlQuery = (tableName, ...params) => {
+  //first param always tableName
+  var paramsLength = params.length;
+  var halfParam = paramsLength / 2;
+  var a = "";
+  var b = "";
+  var columnName = [];
+  var columnValue = [];
+
+  //from first index of array to half index
+  for (i = 0; i <= paramsLength - halfParam - 1; i++) {
+    columnName.push(params[i]);
+    a = a + "??,";
+  }
+  //from halp index of array to last index
+  for (i = halfParam; i <= paramsLength - 1; i++) {
+    columnValue.push(params[i]);
+    b = b + "?,";
+  }
+  //result comes link ??,??,??, we need to remote last character ,
+  a = a.slice(0, -1);
+  b = b.slice(0, -1);
+  columnValue = columnValue.slice(0, -1);
+  const sql =
+    "insert into " + tableName + " (" + a + ")" + " values " + "(" + b + ")";
+  //if paramenters are even then only proceed;
+  if (params.length % 2 !== 0) {
+    console.log(
+      "insert column name and value note matched: one or many coulmn and value quntity not matched"
+    );
+  }
+  console.log(sql);
+  console.log("columnName : " + columnName);
+  console.log("columnValue: " + columnValue);
+  db.query(sql, [...params], (error) => {
+    if (error) {
+      console.log(error);
+      return false;
+    }
+    return true;
+  });
+};
+
