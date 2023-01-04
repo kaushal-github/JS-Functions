@@ -1,48 +1,59 @@
-//trick 1
+ ➡️➡️➡️➡️➡️ Trick 1 ➡️➡️➡️➡️➡️
 
 //INSERT INTO anyTable (anycolumn,anycolumn) VALUES (anycolumnValue,anyColumnValue);
 
 cosnt fn = (...params) => {
   var a = "";
   var b = "";
-  for (i = 1; i <= params.length - 1; i++) {
+  for (i = 1; i <= params.length/2 - 1; i++) {
     a = a + "??,";
     b = b + "?,";
   }
   //result comes link ??,??,??, we need to remote last character ,
   a = a.slice(0, -1);
   b = b.slice(0, -1);
+    if (params.length % 2 !== 0) {
+    console.log(
+      "insert column name and value note matched: one or many coulmn and value quntity not matched"
+    );
+  }
   const sql =
     "insert into " + params[0] + " (" + a + ")" + " values " + "(" + b + ")";
   return sql;
 };
 
 //INSERT INTO anyTable (anycolumn,anycolumn) VALUES (anycolumnValue,anyColumnValue);
-//trick 2
+
+ ➡️➡️➡️➡️➡️ Trick 2 ➡️➡️➡️➡️➡️
 const fn =(...params)=>{
     var a=[];
     var b=[];
-    for(i = 1; i<=params.length-1;i++){
+    for(i = 1; i<=params.length/2-1;i++){
              a.push("??");
              b.push("?");
     }
+      if (params.length % 2 !== 0) {
+    console.log(
+      "insert column name and value note matched: one or many coulmn and value quntity not matched"
+    );
+  }
     const sql=
     "insert into "+params[0]+' ('+ a.toString()+')' +" values "+'('+b.toString()+')';
     return sql
 }
 
-
-//trick 3
+ ➡️➡️➡️➡️➡️ Trick 3 ➡️➡️➡️➡️➡️
 exports.insertSqlQuery = (tableName, ...params) => {
   //first param always tableName
   var paramsLength = params.length;
   var halfParam = paramsLength / 2;
   var a = "";
   var b = "";
-  var columnName = [];
-  var columnValue = [];
+  var columnName = []; //to get only column to entry name from ...params array
+  var columnValue = [];  //to get only column's value from ...params array
 
   //from first index of array to half index
+  //beacuse half of the parameters are columnname and others are its value
   for (i = 0; i <= paramsLength - halfParam - 1; i++) {
     columnName.push(params[i]);
     a = a + "??,";
